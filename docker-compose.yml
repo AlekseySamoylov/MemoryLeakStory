@@ -1,2 +1,11 @@
-
+version: "2.4"
+services:
+  app:
+    image: samoilov/memoryleak:latest
+    environment:
+      - JAVA_OPTS=-Xmx40m -Xms30m
+      - BYTE_ARRAY_SIZE=50000
+    ports:
+      - "8080:8080"
+    mem_limit: 50M
 
