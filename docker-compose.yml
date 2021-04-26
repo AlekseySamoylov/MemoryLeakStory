@@ -3,9 +3,10 @@ services:
   app:
     image: samoilov/memoryleak:latest
     environment:
-      - JAVA_OPTS=-Xmx40m -Xms30m
-      - BYTE_ARRAY_SIZE=50000
+      - JAVA_OPTS=-Xmx40m -Xms30m -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.port=9098 -Dcom.sun.management.jmxremote.rmi.port=9098 -Dcom.sun.management.jmxremote.local.only=false
+      - BYTE_ARRAY_SIZE=500
     ports:
       - "8080:8080"
+      - "9098:9098"
     mem_limit: 50M
 
