@@ -16,7 +16,7 @@ project.setProperty("mainClassName", "com.samoilov.MainKt")
 
 dependencies {
   implementation("org.rocksdb:rocksdbjni:6.19.3")
-
+  implementation("ch.qos.logback:logback-classic:1.2.3")
   implementation(kotlin("stdlib"))
   testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
