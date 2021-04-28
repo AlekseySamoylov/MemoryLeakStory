@@ -29,7 +29,7 @@ class LoopThread : Thread() {
     try {
       byteArraySize = System.getenv("BYTE_ARRAY_SIZE").toInt()
     } catch (ex: Exception) {
-      log.error("Read env BYTE_ARRAY_SIZE error", ex)
+      log.warn("Read env BYTE_ARRAY_SIZE error", ex)
     }
     return byteArraySize
   }

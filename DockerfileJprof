@@ -1,0 +1,7 @@
+FROM adoptopenjdk/openjdk11:jdk-11.0.10_9
+COPY ./jprofiler_linux_11_1_4.tar ./jprofiler_linux.tar
+COPY ./build/libs/*-all.jar app.jar
+USER root
+RUN chmod 0750 ./jprofiler_linux.tar
+RUN tar xf ./jprofiler_linux.tar
+ENTRYPOINT exec java -agentpath:/jprofiler11.1.4/bin/linux-x64/libjprofilerti.so=port=8849 $JAVA_OPTS -jar /app.jar

@@ -15,8 +15,8 @@ class RocksDbLoop: Thread() {
 
   override fun run() {
     val options = Options()
-    options.createIfMissing()
-    val rocksDb = RocksDB.open(options, "./")
+    options.setCreateIfMissing(true)
+    val rocksDb = RocksDB.open(options, "./db")
     try {
       while (run) {
         val id = UUID.randomUUID().toString()
