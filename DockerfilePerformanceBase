@@ -1,0 +1,16 @@
+FROM adoptopenjdk/openjdk11:jdk-11.0.10_9
+COPY ./performance_tools/jprofiler_linux_11_1_4.tar ./jprofiler_linux.tar
+COPY ./performance_tools/jemalloc-*.tar.bz2 ./jemalloc.tar.bz2
+USER root
+RUN chmod 0750 ./jprofiler_linux.tar
+RUN tar xf ./jprofiler_linux.tar
+RUN apt-get update && \
+    apt-get install -y tcpflow vim htop iotop jq curl gcc make graphviz && \
+    tar jxf jemalloc.tar.bz2 && \
+    rm jemalloc.tar.bz2 && \
+    cd jemalloc* && \
+    ./configure --enable-prof --enable-debug && \
+    make && \
+    make install && \
+    cd - && \
+    rm -rf jemalloc*

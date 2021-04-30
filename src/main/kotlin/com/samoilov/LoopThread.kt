@@ -1,5 +1,6 @@
 package com.samoilov
 
+import com.samoilov.Utils.getByteArraySize
 import org.slf4j.LoggerFactory
 import java.lang.Exception
 
@@ -22,16 +23,6 @@ class LoopThread : Thread() {
   fun stopLoop() {
     log.info("Stopping loop")
     run = false
-  }
-
-  private fun getByteArraySize(): Int {
-    var byteArraySize = 5000
-    try {
-      byteArraySize = System.getenv("BYTE_ARRAY_SIZE").toInt()
-    } catch (ex: Exception) {
-      log.warn("Read env BYTE_ARRAY_SIZE error", ex)
-    }
-    return byteArraySize
   }
 }
 
