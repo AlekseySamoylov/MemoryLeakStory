@@ -1,15 +1,16 @@
 package com.samoilov
 
 fun main() {
-  val daemonThread = LoopThread()
-  daemonThread.isDaemon = true
-  daemonThread.start()
+  val memoryLoopThread = LoopThread()
+  memoryLoopThread.name = "MemoryLoopThread"
+  memoryLoopThread.start()
+  val rocksDbLoopThread = RocksDbLoop()
+  rocksDbLoopThread.name = "RocksDbThread"
+  rocksDbLoopThread.start()
 
-  val rocksDbDaemonThread = RocksDbLoop()
-  rocksDbDaemonThread.isDaemon = true
-  rocksDbDaemonThread.start()
   SocketListener.waitSignal()
-  daemonThread.stopLoop()
-  rocksDbDaemonThread.stopLoop()
+
+  memoryLoopThread.stopLoop()
+  rocksDbLoopThread.stopLoop()
 }
 

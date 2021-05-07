@@ -11,7 +11,7 @@ then
     then
       ./gradlew shadowJar
   fi
-  docker build -f ./DockerfilePeformanceRunner -t samoilov/memoryleak-performance:latest .
+  docker build -f ./DockerfileJemallocRunner -t samoilov/memoryleak-jemalloc:latest .
 fi
 
-docker-compose -f docker-compose.performance.yml up -d
+docker-compose -f docker-compose.jemalloc.yml up -d

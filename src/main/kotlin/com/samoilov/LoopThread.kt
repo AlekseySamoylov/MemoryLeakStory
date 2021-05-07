@@ -15,7 +15,6 @@ class LoopThread : Thread() {
       list.add(ByteArray(byteArraySize))
       log.debug("Wait user signal to socket to interrupt. list size={}", list.size)
       sleep(1000)
-      log.debug("Hotswap3")
     }
     log.info("Loop is stopped")
   }

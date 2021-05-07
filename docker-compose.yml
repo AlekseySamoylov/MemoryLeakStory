@@ -13,5 +13,5 @@ services:
     mem_limit: 50M
     volumes:
     - ./reports:/reports
-    - ./out:/db
+    - ./out:/out
 

@@ -1,0 +1,5 @@
+FROM samoilov/jemalloc-base:latest
+COPY ./build/libs/*-all.jar app.jar
+COPY ./startJvmJemallocBackground.sh startJvmJemallocBackground.sh
+
+CMD /startJvmJemallocBackground.sh
